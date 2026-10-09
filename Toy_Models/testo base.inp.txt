@@ -1,0 +1,16 @@
+! EX
+!
+*NODES
+! list of nodes | constrain (x,y,rotation) | x coordinate | y coordinate
+
+*ENDNODES
+!
+*BEAMS
+! list of elements | connecting nodes | property number assignment
+
+*ENDBEAMS
+!
+*PROPERTIES
+! property number assignment | m [kg/m] | E*A [N] | E*J [N*m^2]
+
+*ENDPROPERTIES
