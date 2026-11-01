@@ -1,5 +1,5 @@
 function [q, q_dot, q_ddot] = Newmark_accelerazioni( ...
-    M, C, K, F_fun, t, q0, q_dot0, beta_N, gamma_N)
+    M, C, K, F_fun, t, q0, q_dot0, beta_N, gamma_N, verbose)
 % NEWMARK_ACCELERAZIONI Risolve le equazioni del moto con algoritmo di Newmark implicito
 % Restituisce storie temporali di spostamento, velocità e accelerazione.
 %
@@ -11,11 +11,16 @@ function [q, q_dot, q_ddot] = Newmark_accelerazioni( ...
 %   q_dot0  : vettore velocità iniziali [ndof x 1]
 %   beta_N  : parametro Newmark (es. 1/4 per accelerazione media costante)
 %   gamma_N : parametro Newmark (es. 1/2)
+%   verbose : (Opzionale) true per stampare l'avanzamento, false altrimenti (default: true)
 %
 % Output:
 %   q       : [ndof x nt] spostamenti
 %   q_dot   : [ndof x nt] velocità
 %   q_ddot  : [ndof x nt] accelerazioni
+
+if nargin < 10 || isempty(verbose)
+    verbose = true;
+end
 
 dt = t(2) - t(1);
 kd = size(M, 1);
@@ -38,7 +43,9 @@ L_eff = chol(A_eff, 'lower');
 
 %% Integrazione temporale passo-passo
 prossima_percentuale = 10;
-fprintf('Simulation status: 0%%\n');
+if verbose
+    fprintf('Simulation status: 0%%\n');
+end
 
 for n = 1:nt-1
     % Predittori
@@ -57,12 +64,16 @@ for n = 1:nt-1
     q_dot(:, n + 1) = v_pred + gamma_N * dt * q_ddot(:, n + 1);
 
     % Avanzamento percentuale a terminale
-    percentuale = floor(100 * n / (nt - 1));
-    if percentuale >= prossima_percentuale
-        fprintf('Simulation status: %d%%\n', percentuale);
-        prossima_percentuale = prossima_percentuale + 10;
+    if verbose
+        percentuale = floor(100 * n / (nt - 1));
+        if percentuale >= prossima_percentuale
+            fprintf('Simulation status: %d%%\n', percentuale);
+            prossima_percentuale = prossima_percentuale + 10;
+        end
     end
 end
-fprintf('Simulation status: 100%% - Completed.\n');
+if verbose
+    fprintf('Simulation status: 100%% - Completed.\n');
+end
 
 end

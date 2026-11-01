@@ -29,7 +29,7 @@ addpath(fullfile(cartella_progetto, 'Approccio FEM/Funzioni comuni'));
 
 % dati_modello_fem = Leggi_input('input_file2.txt'); % without TMD
 % dati_modello_fem = Leggi_input('input_file3.txt'); % with TMD
-dati_modello_fem = Leggi_input('R5_validare_con_Chris.txt'); % Validare con Christian
+dati_modello_fem = Leggi_input('input_file2.txt'); % Validare con Christian
 
 
 %% Variables needed for the main to run

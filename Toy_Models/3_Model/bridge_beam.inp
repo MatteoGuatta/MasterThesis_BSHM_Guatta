@@ -1,5 +1,5 @@
-! Benchmark 1: Travata da ponte ferroviario 20 metri (20 elementi)
-! Condizioni di vincolo: Cerniera al nodo 1 (rx=1, ry=1, rtheta=0), Carrello al nodo 21 (rx=0, ry=1, rtheta=0)
+! Benchmark 1: Travata da ponte ferroviario 30 metri (30 elementi)
+! Condizioni di vincolo: Cerniera al nodo 1 (rx=1, ry=1, rtheta=0), Carrello al nodo 31 (rx=0, ry=1, rtheta=0)
 
 *NODES
 ! ID  vx vy vtheta  x      y
@@ -23,7 +23,17 @@
   18  0  0  0       17.0   0.0
   19  0  0  0       18.0   0.0
   20  0  0  0       19.0   0.0
-  21  0  1  0       20.0   0.0
+  21  0  0  0       20.0   0.0
+  22  0  0  0       21.0   0.0
+  23  0  0  0       22.0   0.0
+  24  0  0  0       23.0   0.0
+  25  0  0  0       24.0   0.0
+  26  0  0  0       25.0   0.0
+  27  0  0  0       26.0   0.0
+  28  0  0  0       27.0   0.0
+  29  0  0  0       28.0   0.0
+  30  0  0  0       29.0   0.0
+  31  0  1  0       30.0   0.0
 *ENDNODES
 
 *PROPERTIES
@@ -54,8 +64,18 @@
   18  18  19  1
   19  19  20  1
   20  20  21  1
+  21  21  22  1
+  22  22  23  1
+  23  23  24  1
+  24  24  25  1
+  25  25  26  1
+  26  26  27  1
+  27  27  28  1
+  28  28  29  1
+  29  29  30  1
+  30  30  31  1
 *ENDBEAMS
 
 *DECK
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
 *ENDDECK

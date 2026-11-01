@@ -26,18 +26,33 @@ if nargin < 1 || isempty(file_i)
     disp(' ');
 end
 
-% Gestione estensione .inp
+% Gestione estensione e risoluzione percorso file
 [fpath, fname, fext] = fileparts(file_i);
 if isempty(fext)
-    file_full = fullfile(fpath, [fname, '.inp']);
-else
-    file_full = file_i;
-    file_i = fullfile(fpath, fname);
+    fext = '.inp';
 end
+file_candidate = fullfile(fpath, [fname, fext]);
 
-if exist(file_full, 'file') ~= 2
-    error(['Il file di input non esiste: ', file_full]);
+if exist(file_candidate, 'file') == 2
+    file_full = file_candidate;
+else
+    % Prova nella cartella in cui si trova questo script loadstructure.m
+    dir_script = fileparts(mfilename('fullpath'));
+    file_candidate2 = fullfile(dir_script, [fname, fext]);
+    if exist(file_candidate2, 'file') == 2
+        file_full = file_candidate2;
+    else
+        % Prova tramite il search path di MATLAB
+        wfile = which([fname, fext]);
+        if ~isempty(wfile)
+            file_full = wfile;
+        else
+            error(['Il file di input non esiste: ', file_candidate, ...
+                   newline, 'Cercato anche in: ', file_candidate2]);
+        end
+    end
 end
+file_i = fullfile(fpath, fname);
 
 fid_i = fopen(file_full, 'r');
 if fid_i == -1
