@@ -78,7 +78,7 @@ fprintf('  File salvato: %s\n\n', file_out_healthy);
 %% 2. Generazione Dataset Danno
 
 % Selezione manuale della casistica di danno da simulare [1-Locale_Quarto_L4 , 2 Locale_Mezzeria, 3 Locale_TreQuarti, 4 Degrado_Globale, 5 Doppio_Difetto]
-idx_scenario = 1;
+idx_scenario = 4;
 
 nome_scenario = cfg.scenari_danno{idx_scenario, 1}; % 
 tipo_scenario = cfg.scenari_danno{idx_scenario, 2}; % 
@@ -137,7 +137,7 @@ fprintf('✓ Generazione dataset danno in %.2f s (media: %.3f s/corsa).\n', ...
     time_damaged, time_damaged / n_damaged_runs);
 
 % Salvataggio Baseline Sana su file .mat
-file_out_damaged = fullfile(cfg.output_dir, 'raw_damaged_runs.mat');
+file_out_damaged = fullfile(cfg.output_dir, 'raw_damaged_runs_global.mat');
 save(file_out_damaged, 'acc_damaged', 'meta_damaged', 't_target', 'cfg', '-v7.3');
 fprintf('  File salvato: %s\n\n', file_out_damaged);
 

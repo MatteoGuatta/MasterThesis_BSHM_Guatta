@@ -60,7 +60,7 @@ function cfg = config_benchmark()
     cfg.rayleigh_ab = [0.1, 2e-4];
 
     %% 7. Incertezze e Rumore
-    cfg.noise_sensor = 0.05; % 5% rumore bianco di misura sui sensori (AWGN)
+    cfg.noise_sensor = 0.00; % 5% rumore bianco di misura sui sensori (AWGN)
     cfg.sigma_E_mat  = 0.02; % 2% variabilità naturale del modulo elastico del materiale
     cfg.sigma_m_mat  = 0.02; % 2% variabilità naturale della massa distribuita
 
